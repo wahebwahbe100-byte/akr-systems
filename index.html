@@ -99,6 +99,8 @@
     }
     .topbar__left, .topbar__right { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
     .topbar span, .topbar a { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+    .topbar__icon { width: 17px; height: 17px; object-fit: contain; flex: 0 0 auto; }
+
 
     .navbar {
       height: 92px;
@@ -118,6 +120,11 @@
     .logo { display: inline-flex; align-items: center; width: fit-content; }
     .logo img { width: 190px; height: auto; -webkit-user-drag: none; }
     .menu-toggle { display: none; border: 0; background: none; cursor: pointer; }
+    .menu-toggle__bars { width: 24px; height: 18px; display: grid; gap: 5px; }
+    .menu-toggle__bars span { display: block; height: 2px; border-radius: 999px; background: currentColor; transition: transform .25s ease, opacity .25s ease; }
+    .menu-toggle.is-open .menu-toggle__bars span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle.is-open .menu-toggle__bars span:nth-child(2) { opacity: 0; }
+    .menu-toggle.is-open .menu-toggle__bars span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .nav-links {
       width: 100%;
       display: grid;
@@ -523,6 +530,7 @@
     .stat-item { min-height: 136px; display: grid; grid-template-columns: 72px 1fr; align-items: center; gap: 15px; padding: 18px 34px; position: relative; }
     .stat-item:not(:last-child)::after { content: ""; position: absolute; right: 0; top: 22px; bottom: 22px; width: 1px; background: rgba(47,228,255,.28); }
     .stat-icon { width: 62px; height: 62px; border-radius: 20px; display: grid; place-items: center; background: rgba(255,255,255,.08); color: var(--cyan); font-size: 29px; }
+    .stat-icon img { width: 36px; height: 36px; object-fit: contain; display: block; }
     .stat-content strong {
       display: flex;
       align-items: baseline;
@@ -578,7 +586,7 @@
     .about__content { max-width: 650px; }
     .about__content ul { list-style: none; margin-top: 22px; }
     .about__content li { position: relative; padding: 12px 0 12px 36px; color: #384c68; }
-    .about__content li::before { content: "✓"; position: absolute; left: 0; top: 9px; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: rgba(11,93,255,.10); color: var(--blue); font-weight: 900; }
+    .about__content li::before { content: ""; position: absolute; left: 0; top: 9px; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: rgba(11,93,255,.10); color: var(--blue); font-weight: 900; }
 
     .references { background: #f6fbff; }
     .reference-grid { max-width: 1180px; margin: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
@@ -610,7 +618,7 @@
     .package-price { display: block; color: var(--blue); font-size: 30px; font-weight: 900; margin: 12px 0 16px; }
     .package-card ul { list-style: none; display: grid; gap: 10px; }
     .package-card li { color: #3b4c66; line-height: 1.55; padding-left: 25px; position: relative; }
-    .package-card li::before { content: "•"; position: absolute; left: 3px; color: var(--blue); font-weight: 900; }
+    .package-card li::before { content: ""; position: absolute; left: 3px; top: .72em; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
 
     .delivery { background: radial-gradient(circle at 16% 20%, rgba(47,228,255,.12), transparent 25%), var(--soft-2); }
     .delivery .step { opacity: .9; transform: translateY(18px) scale(.99); transition: opacity .55s ease, transform .55s ease; }
@@ -635,6 +643,7 @@
     .footer__col a:hover { color: var(--blue); transform: translateX(4px); }
     .footer__icons { display: flex; align-items: center; gap: 15px; margin-top: 6px; }
     .footer__icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; color: #fff; font-weight: 900; background: linear-gradient(135deg, var(--cyan), var(--blue)); box-shadow: 0 12px 22px rgba(11,93,255,.18); }
+    .footer__icon img { width: 21px; height: 21px; object-fit: contain; display: block; filter: brightness(0) invert(1); }
     .footer__bottom { padding: 18px 24px; text-align: center; color: #eaf7ff; background: linear-gradient(90deg, var(--navy), var(--navy-2)); font-size: 14px; }
 
     .reveal-on-scroll { opacity: .92; transform: translateY(14px); transition: opacity .55s ease, transform .55s ease; }
@@ -702,7 +711,7 @@
     </div>
     <nav class="navbar">
       <a class="logo" href="#home" aria-label="AKR-Systems Logo"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 240' role='img' aria-label='AKR-Systems Logo'>  <defs>    <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>      <stop offset='0' stop-color='%232fe4ff'/>      <stop offset='0.45' stop-color='%231d7dff'/>      <stop offset='1' stop-color='%230a275f'/>    </linearGradient>    <filter id='s' x='-20%' y='-20%' width='140%' height='140%'>      <feDropShadow dx='0' dy='10' stdDeviation='10' flood-color='%23051b3d' flood-opacity='.22'/>    </filter>  </defs>  <g filter='url(%23s)'>    <path d='M116 30 28 184h55l16-30h77l16 30h58L160 30h-44Zm4 84 18-35 18 35h-36Z' fill='url(%23g)'/>    <path d='M264 30h52v58l64-58h71l-82 72 89 82h-74l-68-64v64h-52V30Z' fill='url(%23g)'/>    <path d='M475 30h115c44 0 73 24 73 61 0 24-12 43-34 53l43 40h-66l-34-33h-45v33h-52V30Zm107 78c17 0 27-7 27-20s-10-20-27-20h-55v40h55Z' fill='url(%23g)'/>  </g>  <text x='690' y='93' font-family='Montserrat,Arial,sans-serif' font-size='38' font-weight='900' fill='%2309204a'>SYSTEMS</text>  <text x='690' y='134' font-family='Montserrat,Arial,sans-serif' font-size='16' font-weight='700' fill='%231d7dff' letter-spacing='2.5'>FIBER · NETWORK · IT</text>  <path d='M690 154h160' stroke='%232fe4ff' stroke-width='6' stroke-linecap='round'/></svg>" alt="AKR-Systems Logo" draggable="false" /></a>
-      <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+      <button class="menu-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false"><span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span></button>
       <div class="nav-links">
         <a href="#home" class="active">Startseite</a>
         <a href="#leistungen">Leistungen</a>
@@ -747,19 +756,19 @@
       <div class="taste-cards">
         <article class="taste-card reveal-on-scroll reveal-delay-1">
           <div class="taste-card__image"><img src="assets/glasfaserausbau-im-haus.png" alt="Glasfaserausbau im Haus" loading="lazy" decoding="async"></div>
-          <div class="taste-card__content"><span class="taste-card__icon">⚡</span><h3>Glasfaserausbau im Haus</h3><p>Vorbereitung, Verlegung und strukturierte Anbindung für moderne Glasfaseranschlüsse innerhalb von Gebäuden – sauber, nachvollziehbar und zukunftssicher.</p></div>
+          <div class="taste-card__content"><h3>Glasfaserausbau im Haus</h3><p>Vorbereitung, Verlegung und strukturierte Anbindung für moderne Glasfaseranschlüsse innerhalb von Gebäuden – sauber, nachvollziehbar und zukunftssicher.</p></div>
         </article>
         <article class="taste-card reveal-on-scroll reveal-delay-2">
           <div class="taste-card__image"><img src="assets/netzwerkverkabelung.png" alt="Netzwerkverkabelung mit Patchpanel" loading="lazy" decoding="async"></div>
-          <div class="taste-card__content"><span class="taste-card__icon">🔌</span><h3>Netzwerkverkabelung</h3><p>LAN-Verkabelung, Patchfelder, Netzwerkdosen, Schrankaufbau und klare Beschriftung für stabile Verbindungen in Wohn- und Gewerbeobjekten.</p></div>
+          <div class="taste-card__content"><h3>Netzwerkverkabelung</h3><p>LAN-Verkabelung, Patchfelder, Netzwerkdosen, Schrankaufbau und klare Beschriftung für stabile Verbindungen in Wohn- und Gewerbeobjekten.</p></div>
         </article>
         <article class="taste-card reveal-on-scroll reveal-delay-3">
           <div class="taste-card__image"><img src="assets/netzwerkoptimierung.png" alt="Netzwerkoptimierung und WLAN Analyse" loading="lazy" decoding="async"></div>
-          <div class="taste-card__content"><span class="taste-card__icon">📡</span><h3>Netzwerkoptimierung</h3><p>Analyse von WLAN, LAN und Internetqualität. Danach werden Engpässe behoben, Access Points geplant und die Verbindung spürbar verbessert.</p></div>
+          <div class="taste-card__content"><h3>Netzwerkoptimierung</h3><p>Analyse von WLAN, LAN und Internetqualität. Danach werden Engpässe behoben, Access Points geplant und die Verbindung spürbar verbessert.</p></div>
         </article>
         <article class="taste-card reveal-on-scroll reveal-delay-4">
           <div class="taste-card__image"><img src="assets/konzepte-beratung.png" alt="Konzepte und Beratung für Netzwerktechnik" loading="lazy" decoding="async"></div>
-          <div class="taste-card__content"><span class="taste-card__icon">🧩</span><h3>Konzepte & Beratung</h3><p>Individuelle Netzwerkkonzepte für kleine Unternehmen und Privatpersonen – verständlich erklärt, praxisnah geplant und passend zum Budget.</p></div>
+          <div class="taste-card__content"><h3>Konzepte & Beratung</h3><p>Individuelle Netzwerkkonzepte für kleine Unternehmen und Privatpersonen – verständlich erklärt, praxisnah geplant und passend zum Budget.</p></div>
         </article>
       </div>
       <div class="quality-features reveal-on-scroll">
@@ -772,9 +781,9 @@
 
     <section class="section products">
       <div class="stats-strip reveal-on-scroll">
-        <div class="stat-item"><div class="stat-icon">⚡</div><div class="stat-content"><strong><span class="count-up stat-number" data-target="10">0</span><span class="stat-unit">Gbit/s</span></strong><span>Glasfaser im Gebäude</span><p>Zukunftssichere Hausverkabelung für schnelle Internetanschlüsse, stabile Übertragung und moderne Netzwerktechnik.</p></div></div>
-        <div class="stat-item"><div class="stat-icon">🔌</div><div class="stat-content"><strong>LAN/WLAN</strong><span>Netzwerk & Optimierung</span><p>Saubere Verkabelung und bessere Abdeckung für Alltag und Arbeit.</p></div></div>
-        <div class="stat-item"><div class="stat-icon">🛠</div><div class="stat-content"><strong><span class="count-up stat-number" data-target="100">0</span><span class="stat-unit">%</span></strong><span>Zuverlässigkeit</span><p>Transparente Abläufe, auf die Sie sich verlassen können.</p></div></div>
+        <div class="stat-item"><div class="stat-icon"><img src="assets/stat-fiber-speed.png" alt="" aria-hidden="true"></div><div class="stat-content"><strong><span class="count-up stat-number" data-target="10">0</span><span class="stat-unit">Gbit/s</span></strong><span>Glasfaser im Gebäude</span><p>Zukunftssichere Hausverkabelung für schnelle Internetanschlüsse, stabile Übertragung und moderne Netzwerktechnik.</p></div></div>
+        <div class="stat-item"><div class="stat-icon"><img src="assets/stat-lan-wlan.png" alt="" aria-hidden="true"></div><div class="stat-content"><strong>LAN/WLAN</strong><span>Netzwerk & Optimierung</span><p>Saubere Verkabelung und bessere Abdeckung für Alltag und Arbeit.</p></div></div>
+        <div class="stat-item"><div class="stat-icon"><img src="assets/stat-reliability.png" alt="" aria-hidden="true"></div><div class="stat-content"><strong><span class="count-up stat-number" data-target="100">0</span><span class="stat-unit">%</span></strong><span>Zuverlässigkeit</span><p>Transparente Abläufe, auf die Sie sich verlassen können.</p></div></div>
       </div>
     </section>
 
@@ -864,9 +873,9 @@
           <h2>Projekt oder Beratung anfragen</h2>
           <p>Nutzen Sie das Formular für eine erste Anfrage. Die Kontaktdaten sind Platzhalter und können später durch echte Daten ersetzt werden.</p>
           <div class="contact__details">
-            <a href="tel:+49000000000">☎ +49 000 000000</a>
-            <a href="mailto:info@akr-systems.de">✉ info@akr-systems.de</a>
-            <span>📍 Einsatzgebiet nach Absprache</span>
+            <a href="tel:+49000000000"><img class="topbar__icon" src="assets/icon-phone.png" alt="" aria-hidden="true"> +49 000 000000</a>
+            <a href="mailto:info@akr-systems.de"><img class="topbar__icon" src="assets/icon-email.png" alt="" aria-hidden="true"> info@akr-systems.de</a>
+            <span><img class="topbar__icon" src="assets/icon-location.png" alt="" aria-hidden="true"> Einsatzgebiet nach Absprache</span>
           </div>
         </div>
         <form class="contact-form" action="mailto:info@akr-systems.de" method="post" enctype="text/plain">
@@ -886,7 +895,7 @@
       <div class="footer__brand"><img class="footer__logo" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 240' role='img' aria-label='AKR-Systems Logo'>  <defs>    <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>      <stop offset='0' stop-color='%232fe4ff'/>      <stop offset='0.45' stop-color='%231d7dff'/>      <stop offset='1' stop-color='%230a275f'/>    </linearGradient>    <filter id='s' x='-20%' y='-20%' width='140%' height='140%'>      <feDropShadow dx='0' dy='10' stdDeviation='10' flood-color='%23051b3d' flood-opacity='.22'/>    </filter>  </defs>  <g filter='url(%23s)'>    <path d='M116 30 28 184h55l16-30h77l16 30h58L160 30h-44Zm4 84 18-35 18 35h-36Z' fill='url(%23g)'/>    <path d='M264 30h52v58l64-58h71l-82 72 89 82h-74l-68-64v64h-52V30Z' fill='url(%23g)'/>    <path d='M475 30h115c44 0 73 24 73 61 0 24-12 43-34 53l43 40h-66l-34-33h-45v33h-52V30Zm107 78c17 0 27-7 27-20s-10-20-27-20h-55v40h55Z' fill='url(%23g)'/>  </g>  <text x='690' y='93' font-family='Montserrat,Arial,sans-serif' font-size='38' font-weight='900' fill='%2309204a'>SYSTEMS</text>  <text x='690' y='134' font-family='Montserrat,Arial,sans-serif' font-size='16' font-weight='700' fill='%231d7dff' letter-spacing='2.5'>FIBER · NETWORK · IT</text>  <path d='M690 154h160' stroke='%232fe4ff' stroke-width='6' stroke-linecap='round'/></svg>" alt="AKR-Systems Logo" /><p class="footer__text">AKR-Systems steht für moderne Glasfaser-, Netzwerk- und Telekommunikationslösungen für Privatpersonen und kleine Unternehmen.</p></div>
       <div class="footer__col"><h3>Navigation</h3><a href="#home">Startseite</a><a href="#leistungen">Leistungen</a><a href="#referenzen">Referenzen</a><a href="#team">Team</a></div>
       <div class="footer__col"><h3>Weitere Seiten</h3><a href="#karriere">Karriere</a><a href="#betreuung">Betreuung</a><a href="#kontakt">Kontakt</a><a href="#">Impressum</a><a href="#">Datenschutz</a></div>
-      <div class="footer__social"><h3>Kontakt</h3><div class="footer__icons"><a class="footer__icon" href="mailto:info@akr-systems.de">@</a><a class="footer__icon" href="tel:+49000000000">☎</a><a class="footer__icon" href="#kontakt">↗</a></div></div>
+      <div class="footer__social"><h3>Kontakt</h3><div class="footer__icons"><a class="footer__icon" href="mailto:info@akr-systems.de" aria-label="E-Mail"><img src="assets/footer-email.png" alt="" aria-hidden="true"></a><a class="footer__icon" href="tel:+49000000000" aria-label="Telefon"><img src="assets/footer-phone.png" alt="" aria-hidden="true"></a><a class="footer__icon" href="#kontakt" aria-label="Kontakt"><img src="assets/footer-contact.png" alt="" aria-hidden="true"></a></div></div>
     </div>
     <div class="footer__bottom">© 2026 AKR-Systems. Alle Rechte vorbehalten.</div>
   </footer>
@@ -899,13 +908,11 @@
         const open = links.classList.toggle('open');
         toggle.classList.toggle('is-open', open);
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        toggle.textContent = open ? '×' : '☰';
       });
       links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
         links.classList.remove('open');
         toggle.classList.remove('is-open');
         toggle.setAttribute('aria-expanded', 'false');
-        toggle.textContent = '☰';
       }));
     }
 
