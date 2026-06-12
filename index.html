@@ -347,6 +347,31 @@
     .taste-card__content h3 { color: var(--navy); font-size: 24px; line-height: 1.15; margin-bottom: 12px; }
     .taste-card__content p { color: #42536d; font-size: 15px; line-height: 1.65; }
     .taste-card__icon { position: absolute; top: 23px; right: 24px; font-size: 34px; color: var(--blue); }
+
+
+    /* Desktop only: better image proportions inside the four service cards */
+    @media (min-width: 1101px) {
+      .taste-card {
+        min-height: 260px;
+        grid-template-columns: 44% 56%;
+      }
+      .taste-card__image {
+        height: 260px;
+      }
+      .taste-card__image img {
+        min-height: 0;
+        height: 260px;
+        object-fit: cover;
+        object-position: center;
+      }
+      .taste-card__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 260px;
+      }
+    }
+
     .quality-features { max-width: 1180px; margin: auto; display: grid; grid-template-columns: repeat(4, 1fr); overflow: hidden; border-radius: 28px; background: linear-gradient(145deg, rgba(255,255,255,.86), rgba(239,247,255,.62)); border: 1px solid rgba(11,93,255,.14); box-shadow: 0 20px 48px rgba(5,21,47,.09); }
     .quality-feature { display: grid; grid-template-columns: 78px 1fr; gap: 20px; align-items: start; padding: 30px 28px; border-right: 1px solid rgba(11,93,255,.11); transition: background .25s ease, transform .25s ease; }
     .quality-feature:hover { background: rgba(255,255,255,.62); transform: translateY(-3px); }
@@ -648,7 +673,7 @@
         <div class="quality-feature"><div class="quality-feature__icon"><dotlottie-player class="quality-feature__lottie" src="assets/saubere-umsetzung.lottie" background="transparent" speed="1" loop autoplay aria-hidden="true"></dotlottie-player></div><div><h3>Saubere Umsetzung</h3><p>Ordentliche Installation, klare Kabelführung und nachvollziehbare Dokumentation.</p></div></div>
         <div class="quality-feature"><div class="quality-feature__icon"><dotlottie-player class="quality-feature__lottie" src="assets/individuelle-planung.lottie" background="transparent" speed="1" loop autoplay aria-hidden="true"></dotlottie-player></div><div><h3>Individuelle Planung</h3><p>Keine Standardlösung, sondern passende Konzepte für Objekt und Nutzung.</p></div></div>
         <div class="quality-feature"><div class="quality-feature__icon"><dotlottie-player class="quality-feature__lottie" src="assets/skalierbar.lottie" background="transparent" speed="1" loop autoplay aria-hidden="true"></dotlottie-player></div><div><h3>Skalierbar</h3><p>Netzwerke, die später erweitert und professionell betreut werden können.</p></div></div>
-        <div class="quality-feature"><div class="quality-feature__icon"><dotlottie-player class="quality-feature__lottie" src="assets/termingerecht.json" background="transparent" speed="1" loop autoplay aria-hidden="true"></dotlottie-player></div><div><h3>Termingerecht</h3><p>Zuverlässige Umsetzung nach Absprache, mit klaren Schritten und sauberer Übergabe.</p></div></div>
+        <div class="quality-feature"><div class="quality-feature__icon"><dotlottie-player class="quality-feature__lottie" src="assets/termingerecht.lottie" background="transparent" speed="1" loop autoplay aria-hidden="true"></dotlottie-player></div><div><h3>Termingerecht</h3><p>Zuverlässige Umsetzung nach Absprache, mit klaren Schritten und sauberer Übergabe.</p></div></div>
       </div>
     </section>
 
