@@ -184,6 +184,8 @@
     .btn--primary, .nav-btn { color: #fff !important; background: linear-gradient(135deg, var(--cyan), var(--blue) 52%, #0742aa); box-shadow: 0 18px 38px rgba(11, 93, 255, .26); }
     .btn--secondary { background: rgba(255,255,255,.82); border-color: rgba(11,93,255,.18); color: var(--navy); }
     .btn:hover, .nav-btn:hover { transform: translateY(-3px); }
+    .btn__arrow { display: inline-block; font-size: 19px; line-height: 1; transition: transform .25s ease; }
+    .btn:hover .btn__arrow { transform: translateX(4px); }
 
     .hero {
       min-height: calc(100vh - 128px);
@@ -687,6 +689,239 @@
       .contact-form { grid-template-columns: 1fr; }
       .footer__inner { grid-template-columns: 1fr; gap: 28px; }
     }
+
+
+    /* ===== Final mobile website design: glass hero like reference ===== */
+    @media (max-width: 1100px) {
+      .topbar { display: none; }
+      .site-header {
+        position: absolute;
+        inset: 0 0 auto 0;
+        z-index: 120;
+      }
+      .navbar {
+        position: relative;
+        top: 0;
+        height: 86px;
+        padding: 10px 18px 0;
+        grid-template-columns: auto 1fr auto;
+        background: transparent;
+        border-bottom: 0;
+        box-shadow: none;
+        backdrop-filter: none;
+      }
+      .logo img {
+        width: 158px;
+        filter: drop-shadow(0 8px 18px rgba(5,21,47,.18));
+      }
+      .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        justify-self: end;
+        width: 58px;
+        height: 58px;
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,.58);
+        background: rgba(255,255,255,.92);
+        color: var(--navy);
+        box-shadow: 0 16px 36px rgba(5,21,47,.22);
+        position: relative;
+        z-index: 130;
+      }
+      .menu-toggle.is-open {
+        color: #fff;
+        background: linear-gradient(135deg, var(--cyan), var(--blue));
+      }
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 16px;
+        right: 16px;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 16px;
+        border-radius: 24px;
+        background: rgba(247,251,255,.96);
+        border: 1px solid rgba(255,255,255,.62);
+        box-shadow: 0 24px 60px rgba(5,21,47,.24);
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        overflow: hidden;
+        pointer-events: none;
+        transform: translateY(-12px) scale(.98);
+        transform-origin: top right;
+        transition: max-height .42s ease, opacity .26s ease, transform .32s ease, visibility 0s linear .42s;
+      }
+      .nav-links.open {
+        max-height: 700px;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+        transition: max-height .42s ease, opacity .26s ease, transform .32s ease, visibility 0s;
+      }
+      .nav-links a {
+        width: 100%;
+        min-height: 48px;
+        background: rgba(255,255,255,.78);
+        border: 1px solid rgba(11,93,255,.10);
+        border-radius: 16px;
+        font-size: 14px;
+      }
+      .nav-links a::after { display: none; }
+      .cards, .steps, .reference-grid, .team-grid, .packages, .stats-strip,
+      .taste-cards, .about, .contact__box, .jobs-grid { grid-template-columns: 1fr; }
+      .quality-features { grid-template-columns: 1fr 1fr; }
+      .section, .quality-taste { padding-left: 24px; padding-right: 24px; }
+      .footer__inner { grid-template-columns: repeat(2, 1fr); padding: 42px 24px; }
+    }
+
+    @media (max-width: 700px) {
+      body { background: #f6fbff; }
+      .navbar { height: 84px; padding: 8px 12px 0; }
+      .logo img { width: 146px; }
+      .menu-toggle {
+        width: 58px;
+        height: 58px;
+        border-radius: 18px;
+      }
+      .hero {
+        min-height: 100svh;
+        align-items: flex-start;
+        padding: 98px 10px 38px;
+        /* نفس صورة هيرو الديسكتوب بدون غلاف أزرق */
+        background:
+          var(--hero-bg-image) center / cover no-repeat,
+          url("hero-background.png") center / cover no-repeat,
+          linear-gradient(110deg, #f7fbff 0%, #eff7ff 44%, #dcf1ff 100%);
+      }
+      .hero::before {
+        background:
+          radial-gradient(circle at 82% 42%, rgba(47,228,255,.10), transparent 27%),
+          radial-gradient(circle at 64% 78%, rgba(11,93,255,.08), transparent 32%),
+          linear-gradient(110deg, rgba(247,251,255,.42) 0%, rgba(239,247,255,.22) 44%, rgba(220,241,255,.08) 100%),
+          linear-gradient(rgba(11,93,255,.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(11,93,255,.035) 1px, transparent 1px);
+        background-size: auto, auto, auto, 42px 42px, 42px 42px;
+      }
+      .hero::after { display: none; }
+      .hero__content {
+        width: min(100%, 430px);
+        margin: 0 auto;
+        padding: 28px 18px 20px;
+        text-align: center;
+        border-radius: 34px;
+        background: linear-gradient(180deg, rgba(255,255,255,.84), rgba(255,255,255,.72));
+        border: 1px solid rgba(255,255,255,.56);
+        box-shadow: 0 24px 58px rgba(5,21,47,.30);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+      }
+      .eyebrow {
+        color: var(--blue);
+        font-size: 11px;
+        letter-spacing: 2px;
+        margin-bottom: 11px;
+      }
+      .hero h1 {
+        color: var(--navy);
+        font-size: clamp(42px, 14vw, 66px);
+        line-height: .92;
+        letter-spacing: -1.7px;
+        margin-bottom: 14px;
+      }
+      .brand-line {
+        display: block;
+        color: var(--blue);
+      }
+      .hero__subtitle {
+        color: var(--navy-2);
+        font-size: 18px;
+        line-height: 1.35;
+        margin-bottom: 12px;
+      }
+      .hero__text {
+        color: #354963;
+        max-width: 31ch;
+        margin: 0 auto 22px;
+        font-size: 14.5px;
+        line-height: 1.78;
+      }
+      .hero__actions {
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      .hero__actions .btn {
+        width: 100%;
+        min-height: 58px;
+        border-radius: 999px;
+        font-size: 15px;
+      }
+      .btn--secondary {
+        background: rgba(255,255,255,.74);
+        border-color: rgba(11,93,255,.16);
+      }
+      .experience {
+        width: 100%;
+        grid-template-columns: 90px 1fr;
+        gap: 14px;
+        padding: 14px;
+        text-align: left;
+        border-radius: 24px;
+        background: rgba(255,255,255,.84);
+        border-color: rgba(255,255,255,.62);
+        box-shadow: 0 14px 34px rgba(5,21,47,.10);
+      }
+      .experience__image {
+        border-right: 1px solid rgba(11,93,255,.13);
+        border-bottom: 0;
+        padding-bottom: 0;
+        font-size: 25px;
+      }
+      .experience__label { font-size: 10px; letter-spacing: 1px; }
+      .experience p { font-size: 12px; line-height: 1.6; }
+
+      .section, .quality-taste { padding: 72px 18px; }
+      .section h2, .quality-taste__head h2 { font-size: clamp(30px, 9vw, 42px); }
+      .taste-card, .card, .step, .team-card, .job-card, .package-card, .reference-card {
+        border-radius: 28px;
+        box-shadow: 0 18px 42px rgba(5,21,47,.10);
+      }
+      .taste-card__image { height: 220px; min-height: 220px; }
+      .taste-card__image img { height: 220px; min-height: 220px; }
+      .taste-card__content { padding: 26px 22px 30px; }
+      .quality-features { grid-template-columns: 1fr; }
+      .quality-feature {
+        grid-template-columns: 66px 1fr;
+        padding: 24px 20px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(11,93,255,.10);
+      }
+      .about__image {
+        min-height: 300px;
+        border-radius: 30px;
+      }
+      .about__image::before { opacity: .38; }
+      .about__image::after { font-size: 42px; left: 24px; bottom: 24px; }
+      .contact__box {
+        padding: 30px 20px;
+        border-radius: 30px;
+      }
+      .contact-form { grid-template-columns: 1fr; }
+      .contact-form input, .contact-form textarea, .contact-form select {
+        border-radius: 18px;
+        min-height: 56px;
+      }
+      .contact-form button { width: 100%; }
+      .footer__inner { grid-template-columns: 1fr; gap: 28px; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       body, .reveal-on-scroll, .delivery .step { opacity: 1 !important; transform: none !important; transition: none !important; }
@@ -728,7 +963,7 @@
         <p class="hero__subtitle">Stabile Netzwerke. Saubere Verkabelung. Zukunftssichere Konzepte.</p>
         <p class="hero__text">AKR-Systems plant, optimiert und realisiert moderne Netzwerk- und Telekommunikationslösungen für Privatpersonen, Mehrfamilienhäuser, Büros und kleine Unternehmen – vom Glasfaserausbau im Haus bis zur strukturierten Netzwerkverkabelung.</p>
         <div class="hero__actions">
-          <a href="#leistungen" class="btn btn--primary">Leistungen ansehen</a>
+          <a href="#leistungen" class="btn btn--primary">Leistungen ansehen <span class="btn__arrow" aria-hidden="true">→</span></a>
           <a href="#kontakt" class="btn btn--secondary">Projekt anfragen</a>
         </div>
         <div class="experience">
