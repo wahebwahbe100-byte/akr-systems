@@ -54,6 +54,7 @@
       --table-bg-image: url("assets/table-background.png");
       --contact-box-bg-image: url("assets/contact-background.png");
       --about-bg-image: url("assets/about-background.png");
+      --hero-visual-image: url("assets/hero-visual.png");
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -479,6 +480,28 @@
     .card__icon, .step span { width: 64px; height: 64px; border-radius: 18px; display: grid; place-items: center; margin-bottom: 22px; background: linear-gradient(135deg, rgba(47,228,255,.26), rgba(11,93,255,.13)); color: var(--blue); font-size: 30px; font-weight: 900; }
     .card h3, .step h3 { color: var(--navy); font-size: 22px; margin-bottom: 12px; }
     .card p, .step p, .team-card p, .job-card p, .package-card p { color: var(--muted); line-height: 1.75; }
+
+    .products.hero-visual-section {
+      padding: 0;
+      background: var(--soft-2);
+    }
+    .hero-visual {
+      width: 100vw;
+      max-width: none;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      overflow: hidden;
+      background: var(--soft-2);
+    }
+    .hero-visual img {
+      width: 100%;
+      min-height: 320px;
+      height: clamp(320px, 44vw, 620px);
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
 
     .stats-strip {
       width: 100vw;
@@ -920,6 +943,7 @@
       }
       .contact-form button { width: 100%; }
       .footer__inner { grid-template-columns: 1fr; gap: 28px; }
+      .hero-visual img { height: auto; min-height: 0; object-fit: contain; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1005,11 +1029,9 @@
       </div>
     </section>
 
-    <section class="section products">
-      <div class="stats-strip reveal-on-scroll">
-        <div class="stat-item"><div class="stat-icon"><img src="assets/stat-fiber-speed.png" alt="" aria-hidden="true"></div><div class="stat-content"><strong><span class="count-up stat-number" data-target="10">0</span><span class="stat-unit">Gbit/s</span></strong><span>Glasfaser im Gebäude</span><p>Zukunftssichere Hausverkabelung für schnelle Internetanschlüsse, stabile Übertragung und moderne Netzwerktechnik.</p></div></div>
-        <div class="stat-item"><div class="stat-icon"><img src="assets/stat-lan-wlan.png" alt="" aria-hidden="true"></div><div class="stat-content"><strong>LAN/WLAN</strong><span>Netzwerk & Optimierung</span><p>Saubere Verkabelung und bessere Abdeckung für Alltag und Arbeit.</p></div></div>
-        <div class="stat-item"><div class="stat-icon"><img src="assets/stat-reliability.png" alt="" aria-hidden="true"></div><div class="stat-content"><strong><span class="count-up stat-number" data-target="100">0</span><span class="stat-unit">%</span></strong><span>Zuverlässigkeit</span><p>Transparente Abläufe, auf die Sie sich verlassen können.</p></div></div>
+    <section class="section products hero-visual-section" aria-label="Hero Visual">
+      <div class="hero-visual reveal-on-scroll">
+        <img src="assets/hero-visual.png" alt="AKR-Systems Hero Visual" loading="lazy" decoding="async">
       </div>
     </section>
 
