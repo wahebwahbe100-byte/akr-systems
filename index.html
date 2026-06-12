@@ -326,23 +326,22 @@
     }
     .taste-card:hover { transform: translateY(-6px); border-color: rgba(11,93,255,.28); box-shadow: 0 26px 58px rgba(5,21,47,.13); }
     .taste-card__image { position: relative; overflow: hidden; border-radius: 28px 0 0 28px; background: #dbefff; }
-    .taste-card__image::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 25% 25%, rgba(47,228,255,.55), transparent 22%),
-        radial-gradient(circle at 72% 66%, rgba(11,93,255,.42), transparent 30%),
-        linear-gradient(135deg, #eaf7ff, #bfe8ff 50%, #d8e8ff);
+    .taste-card__image img {
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      object-fit: cover;
+      transform: scale(1.02);
+      transition: transform .35s ease, filter .35s ease;
+      filter: saturate(1.05) contrast(1.03);
     }
+    .taste-card:hover .taste-card__image img { transform: scale(1.07); }
     .taste-card__image::after {
       content: "";
       position: absolute;
-      inset: 22px;
-      border: 2px solid rgba(255,255,255,.72);
-      border-radius: 20px;
-      background-image: linear-gradient(90deg, rgba(255,255,255,.0) 0 48%, rgba(255,255,255,.70) 49% 51%, rgba(255,255,255,.0) 52%), linear-gradient(rgba(255,255,255,.0) 0 48%, rgba(255,255,255,.65) 49% 51%, rgba(255,255,255,.0) 52%);
-      background-size: 60px 60px;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(47,228,255,.10), rgba(11,93,255,.14));
     }
     .taste-card__content { position: relative; padding: 28px 62px 26px 28px; }
     .taste-card__content h3 { color: var(--navy); font-size: 24px; line-height: 1.15; margin-bottom: 12px; }
@@ -629,19 +628,19 @@
       </div>
       <div class="taste-cards">
         <article class="taste-card reveal-on-scroll reveal-delay-1">
-          <div class="taste-card__image" aria-hidden="true"></div>
+          <div class="taste-card__image"><img src="assets/glasfaserausbau-im-haus.png" alt="Glasfaserausbau im Haus" loading="lazy"></div>
           <div class="taste-card__content"><span class="taste-card__icon">⚡</span><h3>Glasfaserausbau im Haus</h3><p>Vorbereitung, Verlegung und strukturierte Anbindung für moderne Glasfaseranschlüsse innerhalb von Gebäuden – sauber, nachvollziehbar und zukunftssicher.</p></div>
         </article>
         <article class="taste-card reveal-on-scroll reveal-delay-2">
-          <div class="taste-card__image" aria-hidden="true"></div>
+          <div class="taste-card__image"><img src="assets/netzwerkverkabelung.png" alt="Netzwerkverkabelung mit Patchpanel" loading="lazy"></div>
           <div class="taste-card__content"><span class="taste-card__icon">🔌</span><h3>Netzwerkverkabelung</h3><p>LAN-Verkabelung, Patchfelder, Netzwerkdosen, Schrankaufbau und klare Beschriftung für stabile Verbindungen in Wohn- und Gewerbeobjekten.</p></div>
         </article>
         <article class="taste-card reveal-on-scroll reveal-delay-3">
-          <div class="taste-card__image" aria-hidden="true"></div>
+          <div class="taste-card__image"><img src="assets/netzwerkoptimierung.png" alt="Netzwerkoptimierung und WLAN Analyse" loading="lazy"></div>
           <div class="taste-card__content"><span class="taste-card__icon">📡</span><h3>Netzwerkoptimierung</h3><p>Analyse von WLAN, LAN und Internetqualität. Danach werden Engpässe behoben, Access Points geplant und die Verbindung spürbar verbessert.</p></div>
         </article>
         <article class="taste-card reveal-on-scroll reveal-delay-4">
-          <div class="taste-card__image" aria-hidden="true"></div>
+          <div class="taste-card__image"><img src="assets/konzepte-beratung.png" alt="Konzepte und Beratung für Netzwerktechnik" loading="lazy"></div>
           <div class="taste-card__content"><span class="taste-card__icon">🧩</span><h3>Konzepte & Beratung</h3><p>Individuelle Netzwerkkonzepte für kleine Unternehmen und Privatpersonen – verständlich erklärt, praxisnah geplant und passend zum Budget.</p></div>
         </article>
       </div>
@@ -649,7 +648,7 @@
         <div class="quality-feature"><div class="quality-feature__icon"><dotlottie-player class="quality-feature__lottie" src="assets/saubere-umsetzung.lottie" background="transparent" speed="1" loop autoplay aria-hidden="true"></dotlottie-player></div><div><h3>Saubere Umsetzung</h3><p>Ordentliche Installation, klare Kabelführung und nachvollziehbare Dokumentation.</p></div></div>
         <div class="quality-feature"><div class="quality-feature__icon"><dotlottie-player class="quality-feature__lottie" src="assets/individuelle-planung.lottie" background="transparent" speed="1" loop autoplay aria-hidden="true"></dotlottie-player></div><div><h3>Individuelle Planung</h3><p>Keine Standardlösung, sondern passende Konzepte für Objekt und Nutzung.</p></div></div>
         <div class="quality-feature"><div class="quality-feature__icon"><dotlottie-player class="quality-feature__lottie" src="assets/skalierbar.lottie" background="transparent" speed="1" loop autoplay aria-hidden="true"></dotlottie-player></div><div><h3>Skalierbar</h3><p>Netzwerke, die später erweitert und professionell betreut werden können.</p></div></div>
-        <div class="quality-feature"><div class="quality-feature__icon"><dotlottie-player class="quality-feature__lottie" src="assets/termingerecht.json" background="transparent" speed="1" loop autoplay aria-hidden="true"></dotlottie-player></div><div><h3>Termingerecht</h3><p>Zuverlässige Umsetzung nach Absprache, mit klaren Schritten und sauberer Übergabe.</p></div></div>
+        <div class="quality-feature"><div class="quality-feature__icon"><dotlottie-player class="quality-feature__lottie" src="assets/termingerecht.lottie" background="transparent" speed="1" loop autoplay aria-hidden="true"></dotlottie-player></div><div><h3>Termingerecht</h3><p>Zuverlässige Umsetzung nach Absprache, mit klaren Schritten und sauberer Übergabe.</p></div></div>
       </div>
     </section>
 
