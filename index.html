@@ -52,7 +52,7 @@
       --radius: 28px;
       --hero-bg-image: url("assets/hero-background.png");
       --table-bg-image: url("assets/table-background.png");
-      --contact-box-bg-image: url("assets/contact-background.png");
+      --contact-box-bg-image: url("/contact-background.png");
       --about-bg-image: url("assets/about-background.png");
     }
 
@@ -559,7 +559,6 @@
       position: relative;
       /* ضع صورة الخلفية داخل المجلد assets باسم: about-background.png */
       background:
-        linear-gradient(rgba(232,245,255,.36), rgba(232,245,255,.36)),
         var(--about-bg-image) center / cover no-repeat,
         linear-gradient(135deg, #e7f6ff, #d4e9ff);
     }
@@ -618,11 +617,12 @@
       position: relative;
       overflow: hidden;
       isolation: isolate;
-      /* ضع صورة الخلفية داخل المجلد assets باسم: contact-background.png */
-      background:
-        linear-gradient(rgba(247,251,255,.90), rgba(247,251,255,.90)),
-        var(--contact-box-bg-image) center / cover no-repeat,
-        rgba(247,251,255,.98);
+      /* استخدم صورة واحدة فقط في جذر الموقع باسم: /contact-background.png */
+      background-color: rgba(247,251,255,.98);
+      background-image: var(--contact-box-bg-image);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
       box-shadow: 0 34px 80px rgba(0,0,0,.22);
     }
     .contact__box > * { position: relative; z-index: 1; }
