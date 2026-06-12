@@ -312,64 +312,119 @@
     .quality-taste__head { max-width: 930px; margin: 0 auto 28px; text-align: center; }
     .quality-taste__head h2 { font-family: "Space Grotesk", Inter, sans-serif; color: var(--navy); font-size: clamp(30px, 3.4vw, 48px); line-height: 1.06; margin-bottom: 12px; }
     .quality-taste__head p { color: #344760; line-height: 1.75; }
-    .taste-cards { max-width: 1180px; margin: 0 auto 24px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
+    .taste-cards {
+      max-width: 1240px;
+      margin: 0 auto 30px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 30px;
+    }
     .taste-card {
-      min-height: 220px;
+      min-height: 310px;
       overflow: hidden;
       display: grid;
-      grid-template-columns: 1.05fr .95fr;
+      grid-template-columns: 48% 52%;
       border-radius: 30px;
-      background: linear-gradient(145deg, rgba(255,255,255,.90), rgba(239,247,255,.70));
-      border: 1px solid rgba(11,93,255,.14);
-      box-shadow: 0 20px 48px rgba(5,21,47,.09);
+      background: linear-gradient(145deg, rgba(255,255,255,.96), rgba(239,247,255,.80));
+      border: 1px solid rgba(11,93,255,.16);
+      box-shadow: 0 22px 52px rgba(5,21,47,.10);
       transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      isolation: isolate;
     }
-    .taste-card:hover { transform: translateY(-6px); border-color: rgba(11,93,255,.28); box-shadow: 0 26px 58px rgba(5,21,47,.13); }
-    .taste-card__image { position: relative; overflow: hidden; border-radius: 28px 0 0 28px; background: #dbefff; }
+    .taste-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(11,93,255,.30);
+      box-shadow: 0 28px 64px rgba(5,21,47,.14);
+    }
+    .taste-card__image {
+      position: relative;
+      overflow: hidden;
+      min-height: 310px;
+      border-radius: 30px 0 0 30px;
+      background: #dbefff;
+    }
     .taste-card__image img {
+      display: block;
       width: 100%;
       height: 100%;
-      min-height: 220px;
+      min-height: 310px;
       object-fit: cover;
-      transform: scale(1.02);
-      transition: transform .35s ease, filter .35s ease;
-      filter: saturate(1.05) contrast(1.03);
+      object-position: center;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      image-rendering: auto;
+      filter: saturate(1.04) contrast(1.02);
     }
-    .taste-card:hover .taste-card__image img { transform: scale(1.07); }
     .taste-card__image::after {
       content: "";
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: linear-gradient(135deg, rgba(47,228,255,.10), rgba(11,93,255,.14));
+      background:
+        linear-gradient(90deg, rgba(6,21,47,.03), rgba(6,21,47,0)),
+        linear-gradient(135deg, rgba(47,228,255,.08), rgba(11,93,255,.10));
     }
-    .taste-card__content { position: relative; padding: 28px 62px 26px 28px; }
-    .taste-card__content h3 { color: var(--navy); font-size: 24px; line-height: 1.15; margin-bottom: 12px; }
-    .taste-card__content p { color: #42536d; font-size: 15px; line-height: 1.65; }
-    .taste-card__icon { position: absolute; top: 23px; right: 24px; font-size: 34px; color: var(--blue); }
+    .taste-card__content {
+      position: relative;
+      min-height: 310px;
+      padding: 34px 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .taste-card__content::before {
+      content: "";
+      width: 54px;
+      height: 4px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, var(--cyan), var(--blue));
+      box-shadow: 0 8px 18px rgba(11,93,255,.18);
+    }
+    .taste-card__content h3 {
+      color: var(--navy);
+      font-family: "Space Grotesk", Inter, sans-serif;
+      font-size: clamp(24px, 2vw, 31px);
+      line-height: 1.04;
+      letter-spacing: -.7px;
+      margin-bottom: 14px;
+    }
+    .taste-card__content p {
+      color: #344760;
+      font-size: 16px;
+      line-height: 1.75;
+      max-width: 36ch;
+    }
+    .taste-card__icon { display: none; }
 
+    .taste-card:nth-child(1) .taste-card__image img { object-position: center center; }
+    .taste-card:nth-child(2) .taste-card__image img { object-position: 56% center; }
+    .taste-card:nth-child(3) .taste-card__image img { object-position: 48% center; }
+    .taste-card:nth-child(4) .taste-card__image img { object-position: 50% center; }
 
-    /* Desktop only: better image proportions inside the four service cards */
-    @media (min-width: 1101px) {
-      .taste-card {
-        min-height: 260px;
-        grid-template-columns: 44% 56%;
-      }
+    @media (max-width: 1100px) {
+      .taste-cards { grid-template-columns: 1fr; max-width: 760px; }
+      .taste-card { grid-template-columns: 44% 56%; min-height: 260px; }
+      .taste-card__image, .taste-card__image img, .taste-card__content { min-height: 260px; }
+      .taste-card__content { padding: 28px 30px; }
+    }
+
+    @media (max-width: 700px) {
+      .taste-card { grid-template-columns: 1fr; min-height: 0; }
       .taste-card__image {
-        height: 260px;
+        height: 230px;
+        min-height: 230px;
+        border-radius: 30px 30px 0 0;
       }
       .taste-card__image img {
-        min-height: 0;
-        height: 260px;
-        object-fit: cover;
-        object-position: center;
+        height: 230px;
+        min-height: 230px;
       }
       .taste-card__content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        min-height: 260px;
+        min-height: auto;
+        padding: 26px 24px 30px;
       }
+      .taste-card__content p { max-width: none; }
     }
 
     .quality-features { max-width: 1180px; margin: auto; display: grid; grid-template-columns: repeat(4, 1fr); overflow: hidden; border-radius: 28px; background: linear-gradient(145deg, rgba(255,255,255,.86), rgba(239,247,255,.62)); border: 1px solid rgba(11,93,255,.14); box-shadow: 0 20px 48px rgba(5,21,47,.09); }
@@ -578,8 +633,6 @@
       .hero__actions .btn { width: 100%; }
       .experience { grid-template-columns: 1fr; }
       .experience__image { border-right: 0; border-bottom: 1px solid rgba(11,93,255,.16); padding-bottom: 12px; }
-      .taste-card { grid-template-columns: 1fr; }
-      .taste-card__image { height: 210px; border-radius: 28px 28px 0 0; }
       .quality-features { grid-template-columns: 1fr; }
       .quality-feature { border-right: 0; border-bottom: 1px solid rgba(11,93,255,.10); }
       .contact__box { padding: 28px; }
@@ -653,19 +706,19 @@
       </div>
       <div class="taste-cards">
         <article class="taste-card reveal-on-scroll reveal-delay-1">
-          <div class="taste-card__image"><img src="assets/glasfaserausbau-im-haus.png" alt="Glasfaserausbau im Haus" loading="lazy"></div>
+          <div class="taste-card__image"><img src="assets/glasfaserausbau-im-haus.png" alt="Glasfaserausbau im Haus" loading="lazy" decoding="async"></div>
           <div class="taste-card__content"><span class="taste-card__icon">⚡</span><h3>Glasfaserausbau im Haus</h3><p>Vorbereitung, Verlegung und strukturierte Anbindung für moderne Glasfaseranschlüsse innerhalb von Gebäuden – sauber, nachvollziehbar und zukunftssicher.</p></div>
         </article>
         <article class="taste-card reveal-on-scroll reveal-delay-2">
-          <div class="taste-card__image"><img src="assets/netzwerkverkabelung.png" alt="Netzwerkverkabelung mit Patchpanel" loading="lazy"></div>
+          <div class="taste-card__image"><img src="assets/netzwerkverkabelung.png" alt="Netzwerkverkabelung mit Patchpanel" loading="lazy" decoding="async"></div>
           <div class="taste-card__content"><span class="taste-card__icon">🔌</span><h3>Netzwerkverkabelung</h3><p>LAN-Verkabelung, Patchfelder, Netzwerkdosen, Schrankaufbau und klare Beschriftung für stabile Verbindungen in Wohn- und Gewerbeobjekten.</p></div>
         </article>
         <article class="taste-card reveal-on-scroll reveal-delay-3">
-          <div class="taste-card__image"><img src="assets/netzwerkoptimierung.png" alt="Netzwerkoptimierung und WLAN Analyse" loading="lazy"></div>
+          <div class="taste-card__image"><img src="assets/netzwerkoptimierung.png" alt="Netzwerkoptimierung und WLAN Analyse" loading="lazy" decoding="async"></div>
           <div class="taste-card__content"><span class="taste-card__icon">📡</span><h3>Netzwerkoptimierung</h3><p>Analyse von WLAN, LAN und Internetqualität. Danach werden Engpässe behoben, Access Points geplant und die Verbindung spürbar verbessert.</p></div>
         </article>
         <article class="taste-card reveal-on-scroll reveal-delay-4">
-          <div class="taste-card__image"><img src="assets/konzepte-beratung.png" alt="Konzepte und Beratung für Netzwerktechnik" loading="lazy"></div>
+          <div class="taste-card__image"><img src="assets/konzepte-beratung.png" alt="Konzepte und Beratung für Netzwerktechnik" loading="lazy" decoding="async"></div>
           <div class="taste-card__content"><span class="taste-card__icon">🧩</span><h3>Konzepte & Beratung</h3><p>Individuelle Netzwerkkonzepte für kleine Unternehmen und Privatpersonen – verständlich erklärt, praxisnah geplant und passend zum Budget.</p></div>
         </article>
       </div>
