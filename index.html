@@ -52,6 +52,7 @@
       --radius: 28px;
       --hero-bg-image: url("assets/hero-background.png");
       --table-bg-image: url("assets/table-background.png");
+      --hero-visual-image: url("assets/hero-visual.png");
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -257,43 +258,47 @@
       right: 4%;
       top: 50%;
       transform: translateY(-50%);
-      width: min(43vw, 620px);
+      width: min(39vw, 560px);
       aspect-ratio: 1/1;
-      z-index: 1;
+      z-index: 3;
+      overflow: visible;
     }
-    .network-orb {
+    .hero-visual__image-wrap {
       position: absolute;
       inset: 6%;
       border-radius: 42px;
-      background:
-        linear-gradient(140deg, rgba(255,255,255,.86), rgba(255,255,255,.38)),
-        radial-gradient(circle at 32% 25%, rgba(47,228,255,.38), transparent 20%),
-        radial-gradient(circle at 70% 62%, rgba(11,93,255,.32), transparent 29%);
-      border: 1px solid rgba(11,93,255,.18);
-      box-shadow: var(--shadow);
       overflow: hidden;
+      background: #e7f6ff;
+      border: 1px solid rgba(11,93,255,.16);
+      box-shadow: var(--shadow);
     }
-    .network-orb::before {
+    .hero-visual__image {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-visual__image-wrap::after {
       content: "";
       position: absolute;
-      inset: -20%;
-      background:
-        linear-gradient(45deg, transparent 47%, rgba(11,93,255,.18) 48% 52%, transparent 53%),
-        linear-gradient(-45deg, transparent 47%, rgba(47,228,255,.22) 48% 52%, transparent 53%);
-      background-size: 90px 90px;
-      transform: rotate(8deg);
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(120deg, rgba(255,255,255,.08), rgba(11,93,255,.04));
     }
     .device-card {
       position: absolute;
+      z-index: 2;
       padding: 18px;
       border-radius: 24px;
       background: rgba(255,255,255,.84);
       border: 1px solid rgba(11,93,255,.16);
       box-shadow: 0 18px 46px rgba(5,21,47,.14);
       backdrop-filter: blur(12px);
+      overflow: hidden;
     }
-    .device-card strong { display: block; color: var(--navy); margin-bottom: 6px; }
-    .device-card span { color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .device-card strong { display: block; color: var(--navy); margin-bottom: 6px; font-size: 16px; line-height: 1.15; }
+    .device-card span { display: block; color: var(--muted); font-size: 12px; line-height: 1.5; }
     .device-card--one { top: 10%; left: 2%; width: 220px; }
     .device-card--two { right: 0; bottom: 14%; width: 230px; }
 
@@ -678,7 +683,7 @@
       .nav-links a::after { display: none; }
       .hero { min-height: auto; padding: 72px 24px 82px; }
       .hero__content { width: 100%; max-width: 720px; }
-      .hero-visual { position: relative; transform: none; right: auto; top: auto; width: min(100%, 620px); margin: 34px auto 0; aspect-ratio: 1.25/1; }
+      .hero-visual { position: relative; transform: none; right: auto; top: auto; width: min(100%, 520px); margin: 34px auto 0; aspect-ratio: 1.25/1; }
       .cards, .steps, .reference-grid, .team-grid, .packages, .stats-strip { grid-template-columns: 1fr; }
       .taste-cards, .about, .contact__box, .jobs-grid { grid-template-columns: 1fr; }
       .quality-features { grid-template-columns: 1fr 1fr; }
@@ -700,8 +705,13 @@
       .contact__box { padding: 28px; }
       .contact-form { grid-template-columns: 1fr; }
       .footer__inner { grid-template-columns: 1fr; gap: 28px; }
-      .device-card { position: relative; width: auto; top: auto; left: auto; right: auto; bottom: auto; margin: 14px; }
-      .network-orb { inset: 0; }
+      .hero-visual { min-height: 330px; max-width: 420px; }
+      .device-card { position: absolute; width: min(215px, 68%); margin: 0; padding: 14px 16px; border-radius: 20px; }
+      .device-card strong { font-size: 15px; }
+      .device-card span { font-size: 11px; line-height: 1.45; }
+      .device-card--one { top: 18px; left: 0; }
+      .device-card--two { right: 0; bottom: 28px; left: auto; }
+      .hero-visual__image-wrap { inset: 6%; border-radius: 30px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -754,9 +764,15 @@
         </div>
       </div>
       <div class="hero-visual" aria-hidden="true">
-        <div class="network-orb"></div>
-        <div class="device-card device-card--one"><strong>Fiber Ready</strong><span>Hausinterne Glasfaserstrecken, Übergabepunkte und saubere Dokumentation.</span></div>
-        <div class="device-card device-card--two"><strong>Smart Network</strong><span>LAN, WLAN, Patchfelder, Switches und stabile Verbindungen im Alltag.</span></div>
+        <div class="hero-visual__image-wrap">
+          <img class="hero-visual__image" src="assets/hero-visual.png" alt="" loading="eager" decoding="async" onerror="this.onerror=null;this.src='hero-visual.png';" />
+        </div>
+        <div class="device-card device-card--one">
+          <strong>Fiber Ready</strong><span>Hausinterne Glasfaserstrecken, Übergabepunkte und saubere Dokumentation.</span>
+        </div>
+        <div class="device-card device-card--two">
+          <strong>Smart Network</strong><span>LAN, WLAN, Patchfelder, Switches und stabile Verbindungen im Alltag.</span>
+        </div>
       </div>
     </section>
 
