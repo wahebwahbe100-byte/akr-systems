@@ -510,17 +510,13 @@
       margin-right: calc(50% - 50vw);
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      color: #eaf7ff;
-      /* Table/stat background image: assets/table-background.png
-         If your image is beside the HTML file, table-background.png is also supported. */
+      color: #ffffff;
       background:
-        linear-gradient(180deg, rgba(9,32,74,.72), rgba(6,21,47,.82)),
-        var(--table-bg-image) center / cover no-repeat,
-        url("table-background.png") center / cover no-repeat,
-        linear-gradient(180deg, var(--navy-2), var(--navy));
+        linear-gradient(rgba(6,21,47,.18), rgba(6,21,47,.18)),
+        url("assets/hero-visual.png") center / cover no-repeat;
       overflow: hidden;
-      border-top: 1px solid rgba(47,228,255,.24);
-      border-bottom: 1px solid rgba(47,228,255,.24);
+      border-top: 1px solid rgba(255,255,255,.22);
+      border-bottom: 1px solid rgba(255,255,255,.22);
     }
     .stat-item { min-height: 136px; display: grid; grid-template-columns: 72px 1fr; align-items: center; gap: 15px; padding: 18px 34px; position: relative; }
     .stat-item:not(:last-child)::after { content: ""; position: absolute; right: 0; top: 22px; bottom: 22px; width: 1px; background: rgba(47,228,255,.28); }
