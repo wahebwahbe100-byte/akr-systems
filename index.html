@@ -349,13 +349,33 @@
     .taste-card__content p { color: #42536d; font-size: 15px; line-height: 1.65; }
     .taste-card__icon { position: absolute; top: 23px; right: 24px; font-size: 34px; color: var(--blue); }
     .quality-features { max-width: 1180px; margin: auto; display: grid; grid-template-columns: repeat(4, 1fr); overflow: hidden; border-radius: 28px; background: linear-gradient(145deg, rgba(255,255,255,.86), rgba(239,247,255,.62)); border: 1px solid rgba(11,93,255,.14); box-shadow: 0 20px 48px rgba(5,21,47,.09); }
-    .quality-feature { display: grid; grid-template-columns: 62px 1fr; gap: 16px; align-items: start; padding: 26px 24px; border-right: 1px solid rgba(11,93,255,.11); transition: background .25s ease, transform .25s ease; }
-    .quality-feature:hover { background: rgba(255,255,255,.54); transform: translateY(-3px); }
+    .quality-feature { display: grid; grid-template-columns: 78px 1fr; gap: 20px; align-items: start; padding: 30px 28px; border-right: 1px solid rgba(11,93,255,.11); transition: background .25s ease, transform .25s ease; }
+    .quality-feature:hover { background: rgba(255,255,255,.62); transform: translateY(-3px); }
     .quality-feature:last-child { border-right: 0; }
-    .quality-feature__icon { width: 50px; height: 50px; border-radius: 16px; display: grid; place-items: center; background: linear-gradient(135deg, rgba(47,228,255,.22), rgba(11,93,255,.14)); color: var(--blue); font-size: 25px; }
-    .quality-feature__icon dotlottie-player { width: 34px; height: 34px; }
-    .quality-feature h3 { color: var(--navy); font-size: 16px; margin-bottom: 8px; }
-    .quality-feature p { color: #42536d; font-size: 13px; line-height: 1.65; }
+    .quality-feature__icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(47,228,255,.34), rgba(11,93,255,.18));
+      border: 1px solid rgba(11,93,255,.16);
+      box-shadow: 0 14px 28px rgba(11,93,255,.13), inset 0 1px 0 rgba(255,255,255,.85);
+      color: var(--blue);
+      overflow: hidden;
+    }
+    .quality-feature__emoji {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      font-size: 34px;
+      line-height: 1;
+      filter: drop-shadow(0 4px 7px rgba(6,21,47,.16));
+      transform: translateY(1px);
+    }
+    .quality-feature h3 { color: var(--navy); font-size: 18px; margin-bottom: 8px; }
+    .quality-feature p { color: #42536d; font-size: 14px; line-height: 1.7; }
 
     .cards, .steps { max-width: 1180px; margin: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
     .card, .step, .team-card, .job-card, .package-card {
@@ -629,10 +649,10 @@
         </article>
       </div>
       <div class="quality-features reveal-on-scroll">
-        <div class="quality-feature"><div class="quality-feature__icon"><dotlottie-player src="assets/saubere-umsetzung.lottie" background="transparent" speed="1" loop autoplay aria-label="Saubere Umsetzung"></dotlottie-player></div><div><h3>Saubere Umsetzung</h3><p>Ordentliche Installation, klare Kabelführung und nachvollziehbare Dokumentation.</p></div></div>
-        <div class="quality-feature"><div class="quality-feature__icon"><dotlottie-player src="assets/individuelle-planung.lottie" background="transparent" speed="1" loop autoplay aria-label="Individuelle Planung"></dotlottie-player></div><div><h3>Individuelle Planung</h3><p>Keine Standardlösung, sondern passende Konzepte für Objekt und Nutzung.</p></div></div>
-        <div class="quality-feature"><div class="quality-feature__icon"><dotlottie-player src="assets/skalierbar.lottie" background="transparent" speed="1" loop autoplay aria-label="Skalierbar"></dotlottie-player></div><div><h3>Skalierbar</h3><p>Netzwerke, die später erweitert und professionell betreut werden können.</p></div></div>
-        <div class="quality-feature"><div class="quality-feature__icon"><dotlottie-player src="assets/termingerecht.lottie" background="transparent" speed="1" loop autoplay aria-label="Termingerecht"></dotlottie-player></div><div><h3>Termingerecht</h3><p>Zuverlässige Umsetzung nach Absprache, mit klaren Schritten und sauberer Übergabe.</p></div></div>
+        <div class="quality-feature"><div class="quality-feature__icon"><span class="quality-feature__emoji" aria-hidden="true">✅</span></div><div><h3>Saubere Umsetzung</h3><p>Ordentliche Installation, klare Kabelführung und nachvollziehbare Dokumentation.</p></div></div>
+        <div class="quality-feature"><div class="quality-feature__icon"><span class="quality-feature__emoji" aria-hidden="true">🎯</span></div><div><h3>Individuelle Planung</h3><p>Keine Standardlösung, sondern passende Konzepte für Objekt und Nutzung.</p></div></div>
+        <div class="quality-feature"><div class="quality-feature__icon"><span class="quality-feature__emoji" aria-hidden="true">📈</span></div><div><h3>Skalierbar</h3><p>Netzwerke, die später erweitert und professionell betreut werden können.</p></div></div>
+        <div class="quality-feature"><div class="quality-feature__icon"><span class="quality-feature__emoji" aria-hidden="true">⏱️</span></div><div><h3>Termingerecht</h3><p>Zuverlässige Umsetzung nach Absprache, mit klaren Schritten und sauberer Übergabe.</p></div></div>
       </div>
     </section>
 
